@@ -7,7 +7,6 @@
             <active-nominations></active-nominations>
         </div>
         <div class="col-sm-7">
-            {{--<add-nomination v-if="app.addNomination"></add-nomination>--}}
         </div>
     </div>
 </div>

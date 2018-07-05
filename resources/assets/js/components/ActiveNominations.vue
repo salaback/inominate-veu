@@ -1,18 +1,17 @@
+
+
 <template>
     <div>
         <div class="card">
-            <div class="card-header">Active Nominations</div>
+            <div class="card-header">Active Nominations New</div>
 
             <div class="card-body">
-                <div class="btn btn-primary col-sm-12" @click="addNomination = true">
-                    Add Nomination
-                </div>
+                <add-nomination></add-nomination>
             </div>
 
             <div class="card-body">
-
                 <div class="list-group">
-                    <div class="list-group-item nomination" v-for="nomination in nominations">
+                    <div class="list-group-item nomination" v-for="nomination in activeNominations">
                         <div class="name">{{ nomination.name }}</div>
                         <div class="nominationInfo">
                             <span class="office">{{nomination.office}}</span> -
@@ -28,27 +27,16 @@
 
 <script>
     export default {
+
         data() {
             return {
-                addNomination: app.addNomination,
-                nominations: [
-                    {
-                        name: 'John Doe',
-                        office: 'President',
-                        district: 'United States of America',
-                        count: 5
-                    },
-                    {
-                        name: 'John The Second',
-                        office: 'U.S. Senator',
-                        district: 'Montana',
-                        count: 1
-                    }
-                ]
+                addNomination: this.$parent.addNomination,
+                activeNominations: this.$parent.activeNominations
             }
         },
-        name: "ActiveNominations"
+        name: "ActiveNominations",
     }
+
 </script>
 
 <style scoped>

@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.BootstrapVue = require('bootstrap-vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,10 +19,28 @@ window.Vue = require('vue');
 Vue.component('active-nominations', require('./components/ActiveNominations.vue'));
 Vue.component('add-nomination', require('./components/AddNomination'));
 
+let source = [];
+
+let testActiveNoms = [
+    {
+        name: 'John Doe',
+        office: 'President',
+        district: 'United States of America',
+        count: 5
+    },
+    {
+        name: 'John The Second',
+        office: 'U.S. Senator',
+        district: 'Montana',
+        count: 1
+    }
+];
 
 const app = new Vue({
     el: '#app',
     data: {
-        addNomination: false
-    }
+        addNomination: false,
+        activeNominations: testActiveNoms
+    },
+    components: ['active-nominations', 'add-nomination']
 });
