@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function supportedNominations()
+    {
+        return $this->belongsToMany(Nomination::class, 'nomination_supports');
+    }
 }

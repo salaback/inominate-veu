@@ -81,27 +81,28 @@
             onSubmit(evt) {
                 evt.preventDefault();
                 axios.post('/api/nomination', this.nomination)
-                    .then(function(id) {
-                       this.nomination.id = id;
-                       this.activeNominations.push(this.nomination);
-                       $('#addNominationModal').hide();
-                    });
-
+                    .then((response) => {this.nomination.id = response});
+                this.activeNominations.push(this.nomination);
+                this.$refs.addNomRef.hide(),
+                this.clearForm()
             },
             onReset(evt) {
                 evt.preventDefault();
 
-                /* Reset our form values */
-                this.nomination.name = '';
-                this.nomination.office = '';
-                this.nomination.email = '';
-                this.nomination.district = '';
+                this.clearForm();
 
                 /* Trick to reset/clear native browser form validation state */
                 this.show = false;
                 this.$nextTick(() => {
                     this.show = true
                 });
+            },
+            clearForm() {
+                /* Reset our form values */
+                this.nomination.name = '';
+                this.nomination.office = '';
+                this.nomination.email = '';
+                this.nomination.district = '';
             }
         },
         validations: {

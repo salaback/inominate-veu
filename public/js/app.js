@@ -65077,7 +65077,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -65171,29 +65171,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_0_vuelidate__["validationMixin"]],
     methods: {
         onSubmit: function onSubmit(evt) {
-            evt.preventDefault();
-            axios.post('/api/nomination', this.nomination).then(function (id) {
-                this.nomination.id = id;
-                this.activeNominations.push(this.nomination);
-                $('#addNominationModal').hide();
-            });
-        },
-        onReset: function onReset(evt) {
             var _this = this;
 
             evt.preventDefault();
+            axios.post('/api/nomination', this.nomination).then(function (response) {
+                _this.nomination.id = response;
+            });
+            this.activeNominations.push(this.nomination);
+            this.$refs.addNomRef.hide(), this.clearForm();
+        },
+        onReset: function onReset(evt) {
+            var _this2 = this;
 
+            evt.preventDefault();
+
+            this.clearForm();
+
+            /* Trick to reset/clear native browser form validation state */
+            this.show = false;
+            this.$nextTick(function () {
+                _this2.show = true;
+            });
+        },
+        clearForm: function clearForm() {
             /* Reset our form values */
             this.nomination.name = '';
             this.nomination.office = '';
             this.nomination.email = '';
             this.nomination.district = '';
-
-            /* Trick to reset/clear native browser form validation state */
-            this.show = false;
-            this.$nextTick(function () {
-                _this.show = true;
-            });
         }
     },
     validations: {
