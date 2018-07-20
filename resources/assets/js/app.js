@@ -21,26 +21,11 @@ Vue.component('add-nomination', require('./components/AddNomination'));
 
 let source = [];
 
-let testActiveNoms = [
-    {
-        name: 'John Doe',
-        office: 'President',
-        district: 'United States of America',
-        count: 5
-    },
-    {
-        name: 'John The Second',
-        office: 'U.S. Senator',
-        district: 'Montana',
-        count: 1
-    }
-];
-
 const app = new Vue({
     el: '#app',
     data: {
         addNomination: false,
-        activeNominations: testActiveNoms
+        activeNominations: []
     },
     components: ['active-nominations', 'add-nomination']
 });

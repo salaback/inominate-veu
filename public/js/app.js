@@ -20648,25 +20648,13 @@ Vue.component('add-nomination', __webpack_require__(225));
 
 var source = [];
 
-var testActiveNoms = [{
-    name: 'John Doe',
-    office: 'President',
-    district: 'United States of America',
-    count: 5
-}, {
-    name: 'John The Second',
-    office: 'U.S. Senator',
-    district: 'Montana',
-    count: 1
-}];
-
 var app = new Vue({
-    el: '#app',
-    data: {
-        addNomination: false,
-        activeNominations: testActiveNoms
-    },
-    components: ['active-nominations', 'add-nomination']
+  el: '#app',
+  data: {
+    addNomination: false,
+    activeNominations: []
+  },
+  components: ['active-nominations', 'add-nomination']
 });
 
 /***/ }),
