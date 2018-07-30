@@ -11,6 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+
+        // generate test user
+        $user = factory(\App\User::class)
+            ->make([
+                'email' => 'user@test.com',
+                'password' => \Illuminate\Support\Facades\Hash::make('123456')]
+            );
+
+        $nomination = factory(\App\Nomination::class)->make();
+
+
     }
 }

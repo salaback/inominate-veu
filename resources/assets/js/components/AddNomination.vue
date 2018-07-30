@@ -1,9 +1,5 @@
 <template>
   <div>
-    <b-btn v-b-modal.addNominationModal>Add New Nomination</b-btn>
-
-    <!-- Modal Component -->
-    <b-modal ref="addNomRef" id="addNominationModal" title="Add New Nomination">
       <b-form @submit="onSubmit" @reset="onReset" id="addNominationForm">
         <b-form-group id="nameGroup"
                       label="Name:"
@@ -46,11 +42,8 @@
           </b-form-input>
         </b-form-group>
       </b-form>
-      <div slot="modal-footer">
         <b-button type="submit" variant="primary" @click="onSubmit">Submit Nomination</b-button>
         <b-button type="reset" variant="danger" @click="onReset">Reset</b-button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -80,7 +73,7 @@
         methods: {
             onSubmit(evt) {
                 evt.preventDefault();
-                axios.post('/api/nomination', this.nomination)
+                axios.post('/app/nominations', this.nomination)
                     .then((response) => {this.nomination.id = response});
                 this.activeNominations.push(this.nomination);
                 this.$refs.addNomRef.hide(),
@@ -97,13 +90,6 @@
                     this.show = true
                 });
             },
-            clearForm() {
-                /* Reset our form values */
-                this.nomination.name = '';
-                this.nomination.office = '';
-                this.nomination.email = '';
-                this.nomination.district = '';
-            }
         },
         validations: {
             name: {
