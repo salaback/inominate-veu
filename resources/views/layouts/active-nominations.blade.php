@@ -1,8 +1,8 @@
 <div class="card">
-    <div class="card-header">Active Nominations New</div>
+    <div class="card-header">Active Nominations</div>
 
     <div class="card-body">
-        <add-nomination></add-nomination>
+        <a href="{{route('nominations.create')}}" class="btn btn-primary">Add Nomination</a>
     </div>
 
     <div class="card-body">

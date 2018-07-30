@@ -23,7 +23,7 @@ class NominationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('nominations.create');
     }
 
     /**

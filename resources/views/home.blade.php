@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <active-nominations></active-nominations>
+            @include('layouts.active-nominations')
         </div>
         <div class="col-sm-7">
         </div>
