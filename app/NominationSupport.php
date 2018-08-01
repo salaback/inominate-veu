@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class NominationSupport extends Model
 {
-    protected $fillable = ['user_id', 'nomination_id'];
+    protected $fillable = ['user_id', 'nomination_id', 'contribution', 'walk', 'call', 'host', 'yardSign', 'signPetition', 'statement'];
 
     public function nomination()
     {

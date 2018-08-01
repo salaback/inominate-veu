@@ -16,6 +16,13 @@ class CreateNominationSupportsTable extends Migration
         Schema::create('nomination_supports', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->float('contribution', 8, 2);
+            $table->boolean('walk')->default(false);
+            $table->boolean('call')->default(false);
+            $table->boolean('host')->default(false);
+            $table->boolean('yardSign')->default(false);
+            $table->boolean('signPetition')->default(false);
+            $table->text('statement')->nullable();
             $table->integer('nomination_id');
             $table->timestamps();
         });

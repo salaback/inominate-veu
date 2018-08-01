@@ -9,7 +9,7 @@
         <div class="list-group">
             @foreach(\Illuminate\Support\Facades\Auth::user()->supportedNominations as $nomination)
                 <div class="list-group-item nomination">
-                    <div class="name">{{ $nomination->name }}</div>
+                    <div class="name">{{ $nomination->nominee->name }}</div>
                     <div class="nominationInfo">
                         <span class="office">{{ $nomination->office}}</span> -
                         <span class="district">{{ $nomination->district}}</span>

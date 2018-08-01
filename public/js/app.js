@@ -20649,12 +20649,25 @@ Vue.component('add-nomination', __webpack_require__(225));
 var source = [];
 
 var app = new Vue({
-  el: '#app',
-  data: {
-    addNomination: false,
-    activeNominations: []
-  },
-  components: ['active-nominations', 'add-nomination']
+    el: '#app',
+    data: {
+        addNomination: false,
+        activeNominations: []
+    },
+    components: ['active-nominations', 'add-nomination']
+});
+
+var nomApp = new Vue({
+    el: '#nominationApp',
+    data: {
+        firstName: null,
+        middleName: null,
+        lastName: null,
+        email: null,
+        office: null,
+        district: null
+    },
+    components: []
 });
 
 /***/ }),

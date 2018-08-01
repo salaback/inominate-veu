@@ -29,3 +29,17 @@ const app = new Vue({
     },
     components: ['active-nominations', 'add-nomination']
 });
+
+
+const nomApp = new Vue({
+    el: '#nominationApp',
+    data: {
+        firstName: null,
+        middleName: null,
+        lastName: null,
+        email: null,
+        office: null,
+        district: null,
+    },
+    components: []
+})

@@ -14,13 +14,13 @@ class DatabaseSeeder extends Seeder
 
         // generate test user
         $user = factory(\App\User::class)
-            ->make([
+            ->create([
                 'email' => 'user@test.com',
                 'password' => \Illuminate\Support\Facades\Hash::make('123456')]
             );
-
-        $nomination = factory(\App\Nomination::class)->make();
-
+        $nominee = factory(\App\Nominee::class)->create();
+        $nomination = factory(\App\Nomination::class)->create(['nominee_id' => $nominee->id]);
+        $support = factory(\App\NominationSupport::class)->create(['user_id' => $user->id, 'nomination_id' => $nomination->id]);
 
     }
 }
