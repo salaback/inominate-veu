@@ -97,7 +97,7 @@
 
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary">Submit Nomination</button>
+                            <button class="btn btn-primary" id="submitNomination">Submit Nomination</button>
                         </div>
                     </form>
 

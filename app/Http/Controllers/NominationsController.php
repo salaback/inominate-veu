@@ -39,6 +39,7 @@ class NominationsController extends Controller
      */
     public function store(Request $request)
     {
+
         // validated nominee data
         $nominee_data = $request->validate([
             'first_name' => 'required',
@@ -64,14 +65,15 @@ class NominationsController extends Controller
         ]);
 
         // find or load the Nominee user
-        $nominee = Nominee::firstOrNew(['email' => $nominee_data['email']]);
-
-        if(!$nominee->exists)
-        {
-            $nominee->first_name = $nominee_data['first_name'];
-            $nominee->last_name = $nominee_data['last_name'];
-            $nominee->save();
-        }
+        $nominee = Nominee::firstOrUpdate(
+            [
+                'email' => $nominee_data['email']
+            ],
+            [
+                'first_name' => $nominee_data['first_name'],
+                'last_name' => $nominee_data['last_name']
+            ]
+        );
 
         // add information to the nomination data
         $nomination_data['nominee_id'] = $nominee->id;
@@ -83,8 +85,6 @@ class NominationsController extends Controller
         // register support for nomination
         $support_data['user_id'] = Auth::id();
         $support_data['nomination_id'] = $nomination->id;
-
-        NominationSupport::create($support_data);
 
         return redirect('/home');
     }

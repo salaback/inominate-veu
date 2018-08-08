@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Nomination;
+use App\Nominee;
+use App\Observers\NominationObserver;
+use App\Observers\NomineeObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Nominee::observe(NomineeObserver::class);
+        Nomination::observe(NominationObserver::class);
     }
 
     /**
