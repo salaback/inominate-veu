@@ -1,7 +1,7 @@
 ### Todo List
 
 - Core Services
-  - In app notifications
+  - In app notifications (SA Working 8.8.18)
   - Email system
   - Styling
 - Notify nominees they've been nominated
